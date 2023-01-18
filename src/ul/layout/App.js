@@ -1,13 +1,15 @@
 import  Footer  from "./Footer";
 import  Header from "./Header"
-import ItemListContainer from "../../components/ItemListContainer";
+import { BrowserRouter } from "react-router-dom";
+import { Main } from "./Main";
 const App = () => {
-  const greeting = true
   return (
     <>
-    <Header/>
-    <ItemListContainer greeting= {greeting} test= {true}/>
-    <Footer/>
+    <BrowserRouter>
+      <Header/>
+      <Main/>
+      <Footer/>
+    </BrowserRouter>
     </>
   )
 }
