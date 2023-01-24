@@ -1,7 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { ItemDetail } from './ItemDetail'
 import { ItemList } from './ItemList'
 
 const ItemListContainer = () => {
@@ -9,7 +8,7 @@ const ItemListContainer = () => {
     const [productos, setProductos] = useState([])
     const {categoria} = useParams()
     useEffect(()=>{
-        const web = categoria ? `https://fakestoreapi.com/products/category/${categoria}` : `https://fakestoreapi.com/products`
+        const web = categoria ? `https://fakestoreapi.com/products/category/${categoria}` : "https://fakestoreapi.com/products"
         const pedido = fetch(web)
         pedido
         .then ((respuesta)=>{
@@ -32,7 +31,6 @@ const ItemListContainer = () => {
         <div>
             {load ? "productos cargados exitosamente" : "cargando..."}
             <ItemList productos = {productos}/>
-            <ItemDetail productos = {productos} ></ItemDetail>
         </div>
         </>
     )

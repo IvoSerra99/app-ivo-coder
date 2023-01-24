@@ -6,11 +6,10 @@ import { ItemDetailContainer } from '../../components/ItemDetailContainer'
 export const Main = () => {
   return (
     <main>
-    <ItemListContainer/>
     <Routes>
       <Route path='/' element={<ItemListContainer/>}/>
-      <Route path='/productos/:categoria' element={<ItemListContainer/>}/>
-      <Route path='/productos/:id' element={<ItemDetailContainer/>}/>
+      <Route path='/category/:categoria' element={<ItemListContainer/>}/>
+      <Route path='/products/:id' element={<ItemDetailContainer/>}/>
       <Route/>
     </Routes>
     </main>

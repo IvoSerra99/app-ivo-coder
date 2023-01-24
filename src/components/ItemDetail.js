@@ -1,11 +1,19 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 
-export const ItemDetail = (id, productos) => {
+export const ItemDetail = ({producto}) => {
+  console.log("itemDetail", {producto})
   return (
-    <Card>
-      <Card.Body>{productos.id}</Card.Body>
+    <Card style={{ width: '18rem' }}>
+      <Card.Img src={producto.image} />
+      <Card.Body>
+        <Card.Title>{producto.title}</Card.Title>
+        <Card.Text>{producto.description}</Card.Text>
+        <Button variant="secondary">Añadir al carrito!</Button>
+      </Card.Body>
     </Card>
-  )
+  );
 }
+

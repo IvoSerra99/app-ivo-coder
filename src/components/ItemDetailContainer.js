@@ -5,30 +5,25 @@ import { ItemDetail } from './ItemDetail'
 
 export const ItemDetailContainer = () => {
   const [load, setLoad] = useState(false)
-  const [productos, setProductos] = useState({})
+  const [producto, setProducto] = useState({})
 
   const {id} = useParams()
 
   useEffect (() => {
     const prods = fetch (`https://fakestoreapi.com/products/${id}`);
     prods
-      .then((res) =>{
-          const productos = res.json()
-          return productos
-      } )
-      .then((data) => setProductos(data), 
-          setLoad(true))
-          .catch ((err) => console.log(err))
-          .finally (() => {
+    .then((res) => res.json())    
+    .then((data) => setProducto(data),
+        setLoad(true))    
+      .catch((err) => console.log(err))
+      .finally(() => {
             console.log("promesa finalizada")
           } )
 
   }, [id])
   return (
     <>
-    <span>
-      <ItemDetail id={id}></ItemDetail>
-    </span>
+      <ItemDetail producto={producto}></ItemDetail>
     </>
     
   )
