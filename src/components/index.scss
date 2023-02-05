@@ -13,12 +13,24 @@ html , body , #root {
 main {
   flex-grow: 1;
 }
-.main-header {
-  background-color: #FEC89A;
-  padding: 2rem;
+.main-header{
+  background-color:#F4A261 ;
+  padding: 1rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-
+.itemListContainer-Container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.main-footer {
+  height: 15.3rem;
+  display: flex;
+  background-color: #FCD5CE;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}

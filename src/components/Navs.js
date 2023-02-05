@@ -1,14 +1,31 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 const Navs = () => {
   return (
   <nav>
-  <Link to={"category/men's clothing"}>Hombres</Link> 
-  <Link to={"category/women's clothing"}>Mujer</Link>
-  <Link to={"category/electronics"}>Electronicos</Link>
-  <Link to={"category/jewelery"}>Joyas</Link>
+    <Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Categorias
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <NavLink to={"category/men's clothing"}>
+          <Dropdown.Item href="#/action-1">Hombres</Dropdown.Item>
+        </NavLink>
+        <NavLink to={"category/women's clothing"}>
+          <Dropdown.Item href="#/action-2">Mujeres</Dropdown.Item>
+        </NavLink>
+        <NavLink to={"category/electronics"}>
+          <Dropdown.Item href="#/action-3">Electronicos</Dropdown.Item>
+        </NavLink>
+        <NavLink to={"category/jewelery"}>
+          <Dropdown.Item href="#/action-4">Joyas</Dropdown.Item>
+        </NavLink>
+      </Dropdown.Menu>
+    </Dropdown>
   </nav>
      
   )

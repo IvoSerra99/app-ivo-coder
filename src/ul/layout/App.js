@@ -2,14 +2,18 @@ import  Footer  from "./Footer";
 import  Header from "./Header"
 import { BrowserRouter } from "react-router-dom";
 import { Main } from "./Main";
+import CustomProvider from "../../components/CustomProvider";
+
 const App = () => {
   return (
     <>
-    <BrowserRouter>
-      <Header/>
-      <Main/>
-      <Footer/>
-    </BrowserRouter>
+    <CustomProvider>
+      <BrowserRouter>
+        <Header/>
+        <Main/>
+        <Footer/>
+      </BrowserRouter>
+    </CustomProvider>
     </>
   )
 }

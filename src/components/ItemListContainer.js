@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { db } from './firebase'
 import { ItemList } from './ItemList'
 
 const ItemListContainer = () => {
@@ -28,8 +29,8 @@ const ItemListContainer = () => {
 
     return (
         <>
-        <div>
-            {load ? "productos cargados exitosamente" : "cargando..."}
+        <div className='itemListContainer-Container'>
+            {load ? "" : "cargando..."}
             <ItemList productos = {productos}/>
         </div>
         </>
