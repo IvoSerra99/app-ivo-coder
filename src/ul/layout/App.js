@@ -4,6 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Main } from "./Main";
 import CustomProvider from "../../components/CustomProvider";
 
+
+
 const App = () => {
   return (
     <>

@@ -1,30 +1,57 @@
 
+import { getDoc, doc } from 'firebase/firestore'
 import { useState, useEffect } from 'react'
+import { Container } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
-import { db } from './firebase'
+import { toast } from 'react-toastify'
+import { db } from './Firebase'
+
 import { ItemDetail } from './ItemDetail'
+import PaginaNoEncontrada from './PaginaNoEncontrada'
 
 export const ItemDetailContainer = () => {
   const [load, setLoad] = useState(false)
-  const [producto, setProducto] = useState({})
+  const [productos, setProductos] = useState({})
+  const [idExistente, setIdExistente] = useState({})
 
   const {id} = useParams()
 
   useEffect (() => {
-    const prods = fetch (`https://fakestoreapi.com/products/${id}`);
-    prods
-    .then((res) => res.json())    
-    .then((data) => setProducto(data),
-        setLoad(true))    
-      .catch((err) => console.log(err))
-      .finally(() => {
-            console.log("promesa finalizada")
-          } )
+          const docRef = doc(db,"productos",id)
+        const stock = getDoc(docRef)
+        stock
+        .then((respuesta) =>{
+            const producto = respuesta
+            return producto               
+        })
+        .then((producto)=>{
+            if (producto.exists()){
+                setProductos({
+                    id:producto.id,
+                    title:producto.get('title'),
+                    image:producto.get('image'),
+                    category:producto.get('category'),
+                    description:producto.get('description'),
+                    price:producto.get('price')
+                })
+            } else {
+                setIdExistente(false)
+            }
+            setLoad(true)
+        })
+        .catch((error) =>{
+            console.log(error)
+            toast.dismiss()
+            toast.error('¡Ups! parece que hubo un error. ¡Vuelve a intentarlo!')
+        })
 
   }, [id])
   return (
     <>
-      <ItemDetail producto={producto}></ItemDetail>
+     {load  
+                ?   idExistente ? <ItemDetail producto={productos}/> : <PaginaNoEncontrada/>
+                :   <Container className='loadingPages'>Cargando...</Container>
+            }
     </>
     
   )

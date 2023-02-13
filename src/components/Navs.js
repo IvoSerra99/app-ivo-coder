@@ -18,9 +18,6 @@ const Navs = () => {
         <NavLink to={"category/women's clothing"}>
           <Dropdown.Item href="#/action-2">Mujeres</Dropdown.Item>
         </NavLink>
-        <NavLink to={"category/electronics"}>
-          <Dropdown.Item href="#/action-3">Electronicos</Dropdown.Item>
-        </NavLink>
         <NavLink to={"category/jewelery"}>
           <Dropdown.Item href="#/action-4">Joyas</Dropdown.Item>
         </NavLink>

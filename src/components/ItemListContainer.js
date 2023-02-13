@@ -1,38 +1,63 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { db } from './firebase'
 import { ItemList } from './ItemList'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { db } from './Firebase'
+import PaginaNoEncontrada from './PaginaNoEncontrada'
+import { toast } from 'react-toastify'
+import { Container } from 'react-bootstrap'
+
+
 
 const ItemListContainer = () => {
+
     const [load, setLoad] = useState(false)
     const [productos, setProductos] = useState([])
     const {categoria} = useParams()
+    const [productoExistente,setProductoExistente] = useState(true)
+
     useEffect(()=>{
-        const web = categoria ? `https://fakestoreapi.com/products/category/${categoria}` : "https://fakestoreapi.com/products"
-        const pedido = fetch(web)
-        pedido
-        .then ((respuesta)=>{
-            const productos = respuesta.json()
-            return productos
-        })
-        .then((productos)=> {
-            console.log(productos)
-            setProductos(productos)
+        
+        const productosCollection = collection(db,"productos")
+        
+        let filtro
+  
+        if (categoria) {
+            filtro = query(productosCollection, where('category', '==', categoria))
+        } else {
+            filtro = productosCollection
+        }
+
+        const pedidoFirestore = getDocs(filtro) 
+        pedidoFirestore
+            .then((respuesta) => {
+                const productos = respuesta.docs.map(doc => ({
+                ...doc.data(),
+                id: doc.id
+            }))
+            if (!(productos.length === 0)){
+                setProductos(productos)
+                setProductoExistente(true) 
+            } else {
+                setProductoExistente(false)  
+            }
             setLoad(true)
-        })
-        .catch((error)=> {
-            console.log(error)
-        })
+            })
+
+            .catch((error) => {
+                console.log(error)
+                toast.dismiss()
+                toast.error('¡Ups! parece que hubo un error. ¡Vuelve a intentarlo!')
+            })
+
 
     }, [categoria])
 
     return (
         <>
-        <div className='itemListContainer-Container'>
-            {load ? "" : "cargando..."}
-            <ItemList productos = {productos}/>
-        </div>
+        {load ? productoExistente ? <ItemList productos={productos}/> : <PaginaNoEncontrada/>
+            : <Container className='loadingPages'>Cargando...</Container>}
         </>
     )
    
