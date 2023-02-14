@@ -5,7 +5,7 @@ import { useCarrito } from './CustomProvider'
 
 const CartWidget = () => {
   const valorDelContexto = useCarrito()
-  console.log(valorDelContexto)
+  
   return (
     <>
     <NavLink to={"/"}>

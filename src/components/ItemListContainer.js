@@ -48,7 +48,7 @@ const ItemListContainer = () => {
             .catch((error) => {
                 console.log(error)
                 toast.dismiss()
-                toast.error('¡Ups! parece que hubo un error. ¡Vuelve a intentarlo!')
+                toast.error('Hubo un error, porfavor vuelva a intentarlo!')
             })
 
 

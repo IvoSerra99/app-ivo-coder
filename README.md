@@ -71,3 +71,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # Documentacion de la APP
 
+## Proyecto Sneakerz
+ Sneakerz es una aplicacion que funciona como un e-commerce, en donde el usuario puede buscar y filtrar a travez de los botones implementados con distintas tecnologias los productos que desee.
+
+## Tecnologias utilizadas
+-ReactJs
+
+-React Bootstrap (para el layout)
+
+-React Toastify (para notificaciones emergentes)
+
+-React Router Dom (para tener URL amigable e historial)
+
+-Firebase (como base de datos)
+
+-Sass (para maquetado)
+
+### deploy
+[click aqui]()
+
+
