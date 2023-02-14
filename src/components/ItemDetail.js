@@ -14,7 +14,7 @@ export const ItemDetail = ({producto}) => {
         <Card.Title>{producto.title}</Card.Title>
         <Card.Text>{producto.description}</Card.Text>
         <Button variant="secondary">Añadir al carrito!</Button>
-        <ItemCount/>
+        <ItemCount producto={producto}/>
       </Card.Body>
       
     </Card>

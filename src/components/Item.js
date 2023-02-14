@@ -2,7 +2,7 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-import {ItemCount} from "./ItemCount"
+
 
 
 export const Item = ({producto}) => {
@@ -15,7 +15,7 @@ export const Item = ({producto}) => {
         <Card.Title>{producto.title}</Card.Title>
         <Card.Text>{producto.description}</Card.Text>
         <Card.Text>{producto.price}</Card.Text>
-        <ItemCount/>
+        
         {<Link to = {"/products/" + producto.id}><Button variant="secondary">Comprar ahora!</Button></Link>}
       </Card.Body>
     </Card>

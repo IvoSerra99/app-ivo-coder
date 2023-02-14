@@ -11,7 +11,7 @@ import PaginaNoEncontrada from './PaginaNoEncontrada'
 
 export const ItemDetailContainer = () => {
   const [load, setLoad] = useState(false)
-  const [productos, setProductos] = useState({})
+  const [producto, setProducto] = useState({})
   const [idExistente, setIdExistente] = useState({})
 
   const {id} = useParams()
@@ -26,7 +26,7 @@ export const ItemDetailContainer = () => {
         })
         .then((producto)=>{
             if (producto.exists()){
-                setProductos({
+                setProducto({
                     id:producto.id,
                     title:producto.get('title'),
                     image:producto.get('image'),
@@ -49,7 +49,7 @@ export const ItemDetailContainer = () => {
   return (
     <>
      {load  
-                ?   idExistente ? <ItemDetail producto={productos}/> : <PaginaNoEncontrada/>
+                ?   idExistente ? <ItemDetail producto={producto}/> : <PaginaNoEncontrada/>
                 :   <Container className='loadingPages'>Cargando...</Container>
             }
     </>

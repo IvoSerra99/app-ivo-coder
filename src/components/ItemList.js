@@ -9,7 +9,7 @@ export const ItemList = ({productos}) => {
             return (
               <>
               <Item producto = {producto} key= {producto.id}/>
-              <CustomProvider producto = {producto} key={producto}/>
+              <CustomProvider productos = {productos} key={productos.id}/>
               </>
             )
         })}

@@ -6,29 +6,25 @@ export const useCarrito = () => {
   const valorDelContexto = useContext(contexto)
   return valorDelContexto
 }
-const CustomProvider = ({children}) => {
+const CustomProvider = ({children}, {productos}) => {
     const [carrito, setCarrito] = useState ([])
     const [totalProductos, setTotalProductos] = useState (0)
-    const [counter, setCounter] = useState(1)
-    const handleSumar = () => {
-      if (counter < 20){
-        setCounter(counter + 1)
-        
-    }
-    }
-    const handleRestar = () => {
-      if (counter > 1){
-        setCounter(counter - 1)
-    }
-    }
-
-
-
+    
+    const agregarProducto = (counter,producto) => {
+      const copy = productos.map(productos => {
+          if (productos.id === producto.id){
+              return {...productos, cantidad: productos.cantidad + counter}
+          }
+          return producto
+          
+      })}
+      
     const valorDelContexto = {
         carrito: carrito,
         setCarrito: setCarrito,
         totalProductos: totalProductos,
-        setTotalProductos: setTotalProductos 
+        setTotalProductos: setTotalProductos,
+        agregarProducto: agregarProducto 
     }
 
   return (
