@@ -1,4 +1,4 @@
-import { useCarrito } from "../../components/CustomProvider"
+import { useCarrito } from "../../components/CartContext"
 
 
 const Footer = () => {

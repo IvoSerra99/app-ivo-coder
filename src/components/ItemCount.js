@@ -1,12 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
 import { Button } from 'react-bootstrap'
-import { useCarrito } from './CustomProvider'
+import { useCarrito } from './CartContext'
 
 
-export const ItemCount = (producto) => {
+export const ItemCount = (producto, onAdd, stock) => {
     const [counter,setCounter] = useState(1)
-    const {agregarProducto} = useCarrito()
+    const {addItem} = useCarrito()
     
     
 
@@ -21,15 +21,15 @@ export const ItemCount = (producto) => {
         setCounter(counter - 1)
     }
     }
-    const handleCounter = () => {
-      agregarProducto(counter,producto)
-  }
+    //const handleCounter = () => {
+    //  agregarProducto(counter,stock)
+    //}
   return (
     <>
     <Button onClick={handleSumar} variant="primary">Añadir al carrito</Button>
     <p>Cantidad : {counter}</p>
     <Button onClick={handleRestar} variant="primary">Restar del carrito</Button>
-    <Button onClick={handleCounter} variant="primary">Total Productos</Button>
+    <Button onClick={onAdd} variant="primary">Total Productos</Button>
     </>
   )
 }

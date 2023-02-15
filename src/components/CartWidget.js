@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { useCarrito } from './CustomProvider'
+import { useCarrito } from './CartContext'
 //import { db } from './firebase'
 
 const CartWidget = () => {

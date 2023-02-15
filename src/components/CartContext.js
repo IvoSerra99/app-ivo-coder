@@ -10,10 +10,10 @@ const CustomProvider = ({children}, {productos}) => {
     const [carrito, setCarrito] = useState ([])
     const [totalProductos, setTotalProductos] = useState (0)
     
-    const agregarProducto = (counter,producto) => {
+    const addItem = (count,producto) => {
       const copy = productos.map(productos => {
           if (productos.id === producto.id){
-              return {...productos, cantidad: productos.cantidad + counter}
+              return {...productos, cantidad: productos.cantidad + count}
           }
           return producto
           
@@ -24,7 +24,7 @@ const CustomProvider = ({children}, {productos}) => {
         setCarrito: setCarrito,
         totalProductos: totalProductos,
         setTotalProductos: setTotalProductos,
-        agregarProducto: agregarProducto 
+        addItem: addItem
     }
 
   return (

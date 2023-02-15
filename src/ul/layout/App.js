@@ -2,20 +2,21 @@ import  Footer  from "./Footer";
 import  Header from "./Header"
 import { BrowserRouter } from "react-router-dom";
 import { Main } from "./Main";
-import CustomProvider from "../../components/CustomProvider";
+import CartContext from "../../components/CartContext";
+
 
 
 
 const App = () => {
   return (
     <>
-    <CustomProvider>
+    <CartContext>
       <BrowserRouter>
         <Header/>
         <Main/>
         <Footer/>
       </BrowserRouter>
-    </CustomProvider>
+    </CartContext>
     </>
   )
 }
